@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticlesController;
+use App\Http\Controllers\Admin\ArticleCategoriesController;
+use App\Http\Controllers\Admin\ArticleTagsController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -28,6 +29,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Admin/Dashboard');
     })->middleware(['verified'])->name('admin.dashboard');
+
+    // Article-related routes
+    Route::middleware(['verified'])->group(function () {
+        Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
+        Route::get('/articles-categories', [ArticleCategoriesController::class, 'index'])->name('articles-categories.index');
+        Route::get('/articles-tags', [ArticleTagsController::class, 'index'])->name('articles-tags.index');
+        // Add more routes as needed
+    });
 });
 
 require __DIR__.'/auth.php';

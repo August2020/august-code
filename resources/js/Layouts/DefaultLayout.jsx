@@ -1,5 +1,4 @@
 import Navigation from "@/Components/Navigation";
-import { initFlowbite } from "flowbite"; // flowbite init
 
 export default function Guest({ children }) {
     return (

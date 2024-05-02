@@ -1,5 +1,5 @@
 import Checkbox from '@/Components/Checkbox';
-import DefaultLayout from '@/Layouts/DefaultLayout';
+import EmptyLayout from '@/Layouts/EmptyLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -20,10 +20,12 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <DefaultLayout>
+        <EmptyLayout>
             <Head title="Log in" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+
+            <h1 className="text-center text-xl font-medium text-gray-900 dark:text-white">August Code</h1>
 
             <form onSubmit={submit}>
                 <div>
@@ -77,6 +79,6 @@ export default function Login({ status, canResetPassword }) {
                     </PrimaryButton>
                 </div>
             </form>
-        </DefaultLayout>
+        </EmptyLayout>
     );
 }
