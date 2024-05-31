@@ -11,7 +11,7 @@ class StoreArticleTagRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // Change to appropriate authorization logic
     }
 
     /**
@@ -22,7 +22,7 @@ class StoreArticleTagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255|unique:article_tags',
         ];
     }
 }

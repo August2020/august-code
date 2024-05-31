@@ -1,5 +1,5 @@
 import React from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import ApplicationLogo from "@/Components/Global/ApplicationLogo";
 import { Link } from "@inertiajs/react";
 
 const DashboardNav = () => {

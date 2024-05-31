@@ -7,15 +7,13 @@ const DashboardSidebar = () => {
             id="logo-sidebar"
             className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Sidebar"
-            data-drawer-toggle="sidebar-multi-level-sidebar"
-            aria-controls="sidebar-multi-level-sidebar"
             type="button"
         >
             <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
                         <Link
-                            href="#"
+                            href={'dashboard'}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -33,7 +31,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href="#"
+                            href={'kanban'}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -54,8 +52,8 @@ const DashboardSidebar = () => {
                         <button
                             type="button"
                             className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                            aria-controls="dropdown-example"
-                            data-collapse-toggle="dropdown-example"
+                            aria-controls="dropdown-websites"
+                            data-collapse-toggle="dropdown-websites"
                         >
                             <svg
                                 className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -93,12 +91,12 @@ const DashboardSidebar = () => {
                             </svg>
                         </button>
                         <ul
-                            id="dropdown-example"
+                            id="dropdown-websites"
                             className="hidden py-2 space-y-2"
                         >
                             <li>
                                 <Link
-                                    href="#"
+                                    href={'pages'}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Pages List
@@ -106,7 +104,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href={'sections'}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Global Sections
@@ -114,7 +112,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href={'statics'}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Static Contents
@@ -126,8 +124,8 @@ const DashboardSidebar = () => {
                         <button
                             type="button"
                             className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                            aria-controls="dropdown-example"
-                            data-collapse-toggle="dropdown-example"
+                            aria-controls="dropdown-articles"
+                            data-collapse-toggle="dropdown-articles"
                         >
                             <svg
                                 className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -167,12 +165,12 @@ const DashboardSidebar = () => {
                             </svg>
                         </button>
                         <ul
-                            id="dropdown-example"
+                            id="dropdown-articles"
                             className="hidden py-2 space-y-2"
                         >
                             <li>
                                 <Link
-                                    href="#"
+                                    href={'articles'}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Articles List
@@ -180,17 +178,25 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href={'articles-categories'}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
-                                    Articles Categories
+                                    Article Categories
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href={'articles-tags'}
+                                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    Article Tags
                                 </Link>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <Link
-                            href="#"
+                            href={'inbox'}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -212,7 +218,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href="#"
+                            href={'clients'}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -231,7 +237,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href="#"
+                            href={'services'}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -250,7 +256,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href="#"
+                            href={'tickets'}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -275,7 +281,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href="#"
+                            href={'logs'}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg

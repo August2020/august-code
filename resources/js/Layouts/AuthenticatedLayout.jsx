@@ -1,10 +1,12 @@
 import DashboardSidebar from "@/Components/Dashboard/DashboardSidebar";
 import DashboardNav from "@/Components/Dashboard/DashboardNav";
+import FlowbiteInit from "@/Components/Global/FlowbiteInit";
 import { Head } from "@inertiajs/react";
 
 export default function ResponsiveDashboard({ user, children }) {
     return (
         <div className="min-h-screen bg-gray-100">
+            <FlowbiteInit></FlowbiteInit>
             <Head>
                 <meta name="robots" content="none, nofollow, noindex" />
             </Head>

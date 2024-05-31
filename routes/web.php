@@ -22,6 +22,22 @@ Route::get('/', function () {
     return Inertia::render('Index');
 });
 
+Route::get('/wiecej-o-mnie', function () {
+    return Inertia::render('About');
+});
+
+Route::get('/wspolpraca', function () {
+    return Inertia::render('Work');
+});
+
+Route::get('/uslugi/projektowanie', function () {
+    return Inertia::render('Services/Design');
+});
+
+Route::get('/uslugi/programowanie', function () {
+    return Inertia::render('Services/Programming');
+});
+
 // Admin Routes
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');

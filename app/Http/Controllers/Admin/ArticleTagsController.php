@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ArticleTag;
-use App\Http\Requests\StoreArticleTagRequest;
-use App\Http\Requests\UpdateArticleTagRequest;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class ArticleTagsController extends Controller
 {
@@ -14,7 +15,10 @@ class ArticleTagsController extends Controller
      */
     public function index()
     {
-        //
+        $tags = ArticleTag::all();
+        return Inertia::render('Admin/ArticlesTags/Index', [
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -22,15 +26,24 @@ class ArticleTagsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.article_tags.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreArticleTagRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:article_tags',
+        ]);
+
+        ArticleTag::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.article_tags.index')
+            ->with('success', 'Article tag created successfully.');
     }
 
     /**
@@ -38,7 +51,7 @@ class ArticleTagsController extends Controller
      */
     public function show(ArticleTag $articleTag)
     {
-        //
+        return view('admin.article_tags.show', compact('articleTag'));
     }
 
     /**
@@ -46,15 +59,24 @@ class ArticleTagsController extends Controller
      */
     public function edit(ArticleTag $articleTag)
     {
-        //
+        return view('admin.article_tags.edit', compact('articleTag'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateArticleTagRequest $request, ArticleTag $articleTag)
+    public function update(Request $request, ArticleTag $articleTag)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:article_tags,name,' . $articleTag->id,
+        ]);
+
+        $articleTag->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.article_tags.index')
+            ->with('success', 'Article tag updated successfully.');
     }
 
     /**
@@ -62,6 +84,9 @@ class ArticleTagsController extends Controller
      */
     public function destroy(ArticleTag $articleTag)
     {
-        //
+        $articleTag->delete();
+
+        return redirect()->route('admin.article_tags.index')
+            ->with('success', 'Article tag deleted successfully.');
     }
 }

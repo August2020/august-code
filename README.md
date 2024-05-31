@@ -1,3 +1,14 @@
+## Start Developing Setup
+
+<p>In the console run the following commands:</p>
+<ul>
+<li>php artisan serve (to run the server)</li>
+<li>npm run dev (to start the vite server)</li>
+<li>php artisan tinker (interactive shell where you can execute PHP code)</li>
+<li>php artisan ... (for artisan commands ex. make:model)</li>
+</ul>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
