@@ -3,30 +3,36 @@ import PrimaryButton from "@/Components/Global/PrimaryButton";
 
 const HeroSection = ({ title, content, imagePath }) => {
     return (
-        <div className="mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-4 py-8 my-12 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
-            {/* Left Column: Title */}
-            <div className="flex items-center lg:items-start">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl text-black">
-                    {title}
-                </h1>
-            </div>
-
-            {/* Right Column: Content and Button */}
-            <div className="flex flex-col justify-end lg:justify-between">
-                <div className="lg:mt-auto">
-                    <p className="text-lg sm:text-xl md:text-3xl mb-4">{content}</p>
-                    <PrimaryButton
-                        className="text-base md:text-2xl my-4"
-                        disabled={false}
-                    >
-                        Skontaktuj się
-                    </PrimaryButton>
+        <div className="mx-auto max-h-50 grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-5 lg:grid-cols-4 py-8 mt-12 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+            {/* Title and Image Row */}
+            <div className="flex flex-col lg:flex-row xl:col-span-5 lg:col-span-4 min-h-[45vh] lg:min-h-[50vh] gap-8">
+                {/* Title Column */}
+                <div className="xl:w-3/5 lg:w-2/4 flex items-top justify-center lg:justify-start my-4 lg:my-0">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl text-black mt-8">
+                        {title}
+                    </h1>
+                </div>
+                {/* Image Column */}
+                <div className="xl:w-2/5 lg:w-2/4 flex items-start justify-center lg:justify-start">
+                    <img src={imagePath} alt="Hero Image" className="w-full max-h-[55vh] object-cover" />
                 </div>
             </div>
 
-            {/* Full Width Image */}
-            <div className="col-span-full my-8">
-                <img src={imagePath} alt="Hero Image" className="max-w-full" />
+            {/* Content and Button Row */}
+            <div className="flex flex-col lg:flex-row lg:col-span-5 lg:items-end lg:justify-start">
+                <div className="w-full 2xl:w-2/5 xl:w-2/5 lg:w-3/5 flex lg:justify-start lg:items-end lg:min-h-[35vh]">
+                    <div className="w-full lg:w-auto lg:mb-4 mt-4">
+                        <p className="text-lg sm:text-lg md:text-xl lg:text-2xl mb-4">
+                            {content}
+                        </p>
+                        <PrimaryButton
+                            className="text-base md:text-md lg:mb-4"
+                            disabled={false}
+                        >
+                            Skontaktuj się
+                        </PrimaryButton>
+                    </div>
+                </div>
             </div>
         </div>
     );

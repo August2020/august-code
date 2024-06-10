@@ -26,16 +26,16 @@ Route::get('/wiecej-o-mnie', function () {
     return Inertia::render('About');
 });
 
-Route::get('/wspolpraca', function () {
-    return Inertia::render('Work');
-});
-
 Route::get('/uslugi/projektowanie', function () {
     return Inertia::render('Services/Design');
 });
 
 Route::get('/uslugi/programowanie', function () {
     return Inertia::render('Services/Programming');
+});
+
+Route::get('/kontakt', function () {
+    return Inertia::render('Contact');
 });
 
 // Admin Routes

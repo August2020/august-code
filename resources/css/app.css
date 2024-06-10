@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mesh gradient background with distinct color spots */
+/* .bg-mesh-gradient {
+    background: radial-gradient(circle at 20% 30%, #ffffff, transparent 60%),
+        radial-gradient(circle at 50% 50%, #e8f8fa, transparent 60%),
+        radial-gradient(circle at 80% 70%, #f5efe1, transparent 60%);
+    background-size: 200% 200%;
+    animation: gradientAnimation 20s infinite alternate;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+} */

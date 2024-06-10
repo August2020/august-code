@@ -10,7 +10,7 @@ const ContactSection = () => {
     const address = "47-440 Nędza, ul.Mickiewicza 5";
 
     return (
-        <div className="w-full grid grid-cols-1 md:grid-cols-2">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-8">
             {/* Text with Background Image */}
             <div
                 className="relative flex justify-center items-center text-white"
@@ -20,18 +20,18 @@ const ContactSection = () => {
                     backgroundPosition: "center",
                 }}
             >
-                <div className="bg-black bg-opacity-50 p-6 h-full flex flex-col justify-center">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl mb-4">
+                <div className="bg-black bg-opacity-50 px-4 mx-auto my-8 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 h-full flex flex-col justify-center">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl">
                         {contactTitle}
                     </h2>
-                    <p className="text-lg sm:text-xl md:text-2xl">
+                    <p className="lg:text-lg md:text-md sm:text-sm mt-4">
                         {contactText}
                     </p>
                 </div>
             </div>
             {/* Contact Information */}
-            <div className="p-8 bg-gray-100 flex flex-col justify-center">
-                <div className="mx-auto text-left w-3/4">
+            <div className="p-8 flex flex-col justify-center">
+                <div>
                     <h2 className="text-3xl font-bold mb-4">
                         Zostańmy w kontakcie
                     </h2>

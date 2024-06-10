@@ -1,12 +1,14 @@
 import Navigation from "@/Components/Global/Navigation";
+import FlowbiteInit from "@/Components/Global/FlowbiteInit";
 import Footer from "@/Components/Global/Footer";
 
 export default function Guest({ children }) {
     return (
-        <div className="min-h-screen bg-white-100">
+        <div className="min-h-screen">
+            <FlowbiteInit></FlowbiteInit>
             <Navigation />
             <main>
-                <div className="bg-white overflow-hidden">{children}</div>
+                <div className="bg-transparent overflow-hidden">{children}</div>
             </main>
             <Footer />
         </div>
