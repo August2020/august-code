@@ -237,7 +237,7 @@ const About = () => {
                     imagePath={"/files/images/laptop-code-image.jpg"}
                 />
                 <TimelineSection
-                    title="Work Timeline"
+                    title="Moja Kariera"
                     timeline={timelineData}
                 />
                 <SkillsSection />

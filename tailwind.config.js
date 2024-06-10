@@ -26,6 +26,21 @@ export default {
                 '9xl': '90rem',  // 1440px
                 '10xl': '100rem', // 1600px
             },
+            'animation': {
+                'gradient-x': 'gradient-x 20s ease infinite',
+            },
+            'keyframes': {
+                'gradient-x': {
+                    '0%, 100%': {
+                        'background-size': '200% 200%',
+                        'background-position': 'right center'
+                    },
+                    '50%': {
+                        'background-size': '200% 200%',
+                        'background-position': 'left center'
+                    }
+                },
+            },
         },
     },
 

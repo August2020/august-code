@@ -3,7 +3,7 @@ export default function PrimaryButton({ className = '', disabled, children, ...p
         <button
             {...props}
             className={
-                `bg-blue-500 hover:bg-blue-700 text-white text-lg py-2 px-4 rounded focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ${
+                `bg-blue-500 hover:bg-blue-700 text-white text-lg py-2 px-4 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ${
                     disabled && 'opacity-25'
                 } ` + className
             }

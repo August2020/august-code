@@ -8,31 +8,38 @@ const Design = () => {
     return (
         <DefaultLayout>
             <HeroSection
-                title={"Szymon Augustyn - Dowiedz się więcej o mnie!"}
+                title={"Projektowanie UX i UI Stron Internetowych"}
                 content={
-                    "Cześć! Nazywam się Szymon Augustyn i jestem pasjonatem programowania i projektowania. Na tej stronie możesz dowiedzieć się więcej o moich umiejętnościach, doświadczeniach i projektach, nad którymi pracowałem. Zapraszam do odkrycia mojej historii!"
+                    "Projektowanie wyjątkowych doświadczeń użytkowników i intuicyjnych interfejsów jest kluczem do sukcesu Twojego produktu. Tworzę rozwiązania, które łączą estetykę z funkcjonalnością, przekształcając Twoje pomysły w produkt, który zachwyci Ciebie i Twoich klientów."
                 }
                 imagePath={"/files/images/hero-image.jpg"}
             />
 
             <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
                 <ImageContentSection
-                    title={"Więcej o mnie"}
+                    title={"Usługi UX Design"}
                     content={
-                        "Jestem pasjonatem projektowania i programowania stron internetowych. Moją misją jest dostarczanie rozwiązań, które łączą innowacyjny design z funkcjonalnością i efektywnością. Poprzez dbałość o każdy detal, dążę do stworzenia stron, które zapewniają użytkownikom wyjątkowe doświadczenie online."
+                        "Projektowanie doświadczeń użytkownika (UX) to proces tworzenia produktów, które zapewniają użytkownikom znaczące i odpowiednie doświadczenia. Moje usługi obejmują badania użytkowników, tworzenie person, prototypowanie, testowanie użyteczności oraz analizę wyników, aby zapewnić, że finalny produkt spełnia potrzeby i oczekiwania użytkowników."
                     }
-                    buttonText={"Czytaj więcej"}
-                    imagePath={"/files/images/laptop-code-image.jpg"}
+                    imagePath={"/files/images/ux-design.jpg"}
                 />
             </div>
             <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
                 <ContentImageSection
-                    title={"Więcej o mnie"}
+                    title={"Usługi UI Design"}
                     content={
-                        "Jestem pasjonatem projektowania i programowania stron internetowych. Moją misją jest dostarczanie rozwiązań, które łączą innowacyjny design z funkcjonalnością i efektywnością. Poprzez dbałość o każdy detal, dążę do stworzenia stron, które zapewniają użytkownikom wyjątkowe doświadczenie online."
+                        "Projektowanie interfejsu użytkownika (UI) koncentruje się na wyglądzie i stylu aplikacji. Oferuję usługi w zakresie tworzenia estetycznych i funkcjonalnych interfejsów, które są intuicyjne i łatwe w użyciu. Moje projekty są zgodne z najnowszymi trendami i standardami branżowymi, aby zapewnić najwyższą jakość i satysfakcję użytkowników."
                     }
-                    buttonText={"Czytaj więcej"}
-                    imagePath={"/files/images/laptop-code-image.jpg"}
+                    imagePath={"/files/images/ui-design.jpg"}
+                />
+            </div>
+            <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+                <ImageContentSection
+                    title={"Proces projektowania"}
+                    content={
+                        "Mój proces projektowania obejmuje kilka kluczowych etapów: odkrycie, definiowanie, rozwój i dostarczenie. Na każdym z tych etapów ściśle współpracuję z klientami, aby zapewnić, że końcowy produkt jest zgodny z ich wizją i celami. Od wstępnych badań i tworzenia prototypów, po testowanie i ostateczne wdrożenie, dążę do stworzenia wyjątkowych i efektywnych rozwiązań."
+                    }
+                    imagePath={"/files/images/design-process.jpg"}
                 />
             </div>
         </DefaultLayout>
