@@ -11,6 +11,7 @@ const Contact = () => {
                     "Chcesz dowiedzieć się więcej o moich usługach programistycznych lub umówić się na konsultację? Skontaktuj się ze mną już dziś! Razem możemy stworzyć rozwiązania, które będą wspierać rozwój Twojego biznesu. Odpowiem na wszystkie pytania i przedstawię, jak mogę pomóc w realizacji Twoich celów."
                 }
                 imagePath={"/files/images/contact-image.jpg"}
+                showButton={false}
             />
         </DefaultLayout>
     );
