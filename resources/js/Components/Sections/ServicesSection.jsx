@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ServicesSection = ({ imagePath }) => {
     const title = "Moje Usługi";
     const content =
         "Oferuję  usługi dla Twojej firmy, aby pomóc Ci osiągnąć Twoje cele biznesowe. Niezależnie od tego, czy potrzebujesz nowoczesnej strony internetowej, zaawansowanych rozwiązań programistycznych, czy atrakcyjnego designu, jestem tutaj, aby dostarczyć rozwiązania na najwyższym poziomie, które będą odpowiadać Twoim indywidualnym potrzebom.";
 
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
+
     return (
-        <div className="w-full py-12">
+        <section className="w-full py-12" data-aos="fade-right">
             <div className="grid grid-cols-2 2xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1">
                 {/* Image Column */}
                 <div className="col-span-1 lg:col-span-1">
@@ -20,7 +30,9 @@ const ServicesSection = ({ imagePath }) => {
                 {/* Content Column */}
                 <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:px-12 2xl:px-16 flex flex-col justify-center">
                     <div className="block mb-8">
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl">{title}</h2>
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl">
+                            {title}
+                        </h2>
                         <p className="mt-4 text-lg">{content}</p>
                     </div>
 
@@ -55,11 +67,11 @@ const ServicesSection = ({ imagePath }) => {
 
                                 <p class="mb-3 lg:text-lg md:text-md sm:text-md font-normal text-gray-700 dark:text-gray-400">
                                     Moje podejście do projektowania stron
-                                    internetowych opiera się na
-                                    zrozumieniu Twoich potrzeb i celów. Tworzę
-                                    strony, które nie tylko przyciągają uwagę
-                                    wizualną, ale także skutecznie komunikują
-                                    przekaz i budują zaufanie Twoich klientów.
+                                    internetowych opiera się na zrozumieniu
+                                    Twoich potrzeb i celów. Tworzę strony, które
+                                    nie tylko przyciągają uwagę wizualną, ale
+                                    także skutecznie komunikują przekaz i budują
+                                    zaufanie Twoich klientów.
                                 </p>
                                 <a
                                     href="/uslugi/projektowanie"
@@ -146,7 +158,7 @@ const ServicesSection = ({ imagePath }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

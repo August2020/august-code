@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SkillsSection = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
+
     return (
-        <section className="py-12">
+        <section className="py-12" data-aos="fade-right">
             <div className="max-w-12xl mx-auto">
                 <h2 className="text-3xl font-extrabold mb-3">Umiejętności</h2>
                 <div className="mb-3">

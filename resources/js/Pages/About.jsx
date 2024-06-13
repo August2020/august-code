@@ -29,7 +29,7 @@ const About = () => {
             ),
             isLatest: true,
             buttonText: "Zobacz moje CV",
-            buttonLink: "#"
+            buttonLink: "/files/documents/Resume_Szymon_Augustyn_pl_2024.pdf"
         },
         {
             title: "Zmiana wydziału na studiach",

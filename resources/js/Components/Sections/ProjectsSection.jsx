@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const ProjectsSection = ({ title, projects }) => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
     return (
-        <section className="py-12 bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <section className="py-12 bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-right">
             {projects.map((project, index) => (
                 <div class="max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">

@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 import PrimaryButton from "@/Components/Global/PrimaryButton";
 
 const HeroSection = ({ title, content, imagePath, showButton = true }) => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
+
     return (
-        <div className="mx-auto max-h-50 grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-5 lg:grid-cols-4 py-8 mt-12 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+        <section
+            className="mx-auto max-h-50 grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-5 lg:grid-cols-4 py-8 mt-12 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16"
+            data-aos="fade-up"
+        >
             {/* Title and Image Row */}
             <div className="flex flex-col lg:flex-row xl:col-span-5 lg:col-span-4 min-h-[45vh] lg:min-h-[50vh] gap-8">
                 {/* Title Column */}
@@ -18,29 +31,49 @@ const HeroSection = ({ title, content, imagePath, showButton = true }) => {
                         src={imagePath}
                         alt="Hero Image"
                         className="w-full max-h-[55vh] object-cover"
+                        data-aos="fade-left"
                     />
                 </div>
             </div>
 
             {/* Content and Button Row */}
             <div className="flex flex-col lg:flex-row lg:col-span-5 lg:items-end lg:justify-start">
-                <div className="w-full 2xl:w-2/5 xl:w-2/5 lg:w-3/5 flex lg:justify-start lg:items-end lg:min-h-[35vh] xl:min-h-[39vh]">
+                <div className="w-full 2xl:w-2/5 xl:w-2/5 lg:w-3/5 flex lg:justify-start lg:items-end lg:min-h-[35vh] xl:min-h-[38vh]">
                     <div className="w-full lg:w-auto lg:mb-4 mt-4">
-                        <p className="text-lg sm:text-md md:text-lg lg:text-xl mb-4">
+                        <p
+                            className="text-lg sm:text-md md:text-lg lg:text-xl mb-4"
+                            data-aos="fade-right"
+                        >
                             {content}
                         </p>
                         {showButton && (
                             <PrimaryButton
-                                className="text-base md:text-md lg:mb-4"
+                                className="text-base md:text-md lg:mb-4 inline-flex items-center"
                                 disabled={false}
+                                data-aos="fade-up"
                             >
                                 Skontaktuj się
+                                <svg
+                                    class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 14 10"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M1 5h12m0 0L9 1m4 4L9 9"
+                                    />
+                                </svg>
                             </PrimaryButton>
                         )}
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

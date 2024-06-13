@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TimelineSection = ({ title, timeline }) => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1200,
+            easing: "ease-in-out",
+            once: true,
+        });
+    }, []);
     return (
-        <section className="py-12">
+        <section className="py-12" data-aos="fade-right">
             <h2 className="text-3xl font-bold mb-8 text-center">{title}</h2>
             <ol className="relative max-w-4xl mx-auto">
                 {timeline.map((item, index) => (
                     <li
                         key={index}
-                        className={`mb-4 ${index === timeline.length - 1 ? '' : 'border-l border-gray-200 dark:border-gray-700'}`}
+                        className={`mb-4 ${
+                            index === timeline.length - 1
+                                ? ""
+                                : "border-l border-gray-200 dark:border-gray-700"
+                        }`}
                     >
                         <span className="absolute flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full -left-5 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
                             <svg

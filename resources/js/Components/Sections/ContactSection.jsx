@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ContactSection = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 2000,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    }, []);
+
     const backgroundImage = "/files/images/laptop-code-image.jpg";
     const contactTitle = "Gotowy na krok w przód w świecie internetowym?";
     const contactText =
@@ -10,7 +20,7 @@ const ContactSection = () => {
     const address = "47-440 Nędza, ul.Mickiewicza 5";
 
     return (
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-8">
+        <section className="w-full grid grid-cols-1 md:grid-cols-2 mt-8" data-aos="fade-in">
             {/* Text with Background Image */}
             <div
                 className="relative flex justify-center items-center text-white"
@@ -19,6 +29,7 @@ const ContactSection = () => {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
+                
             >
                 <div className="bg-black bg-opacity-50 px-4 mx-auto my-8 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 h-full flex flex-col justify-center">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl">
@@ -30,8 +41,8 @@ const ContactSection = () => {
                 </div>
             </div>
             {/* Contact Information */}
-            <div className="p-8 flex flex-col justify-center">
-                <div>
+            <div className="p-8 flex flex-col justify-center" data-aos="fade-left">
+                <div data-aos="fade-left">
                     <h2 className="text-3xl font-bold mb-4">
                         Zostańmy w kontakcie
                     </h2>
@@ -116,7 +127,7 @@ const ContactSection = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
