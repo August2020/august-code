@@ -6,11 +6,11 @@ const Contact = () => {
     return (
         <DefaultLayout>
             <HeroSection
-                title={"Skontaktuj się ze mną"}
+                title={"Skontaktuj się ze mną i zacznijmy współpracę"}
                 content={
                     "Chcesz dowiedzieć się więcej o moich usługach programistycznych lub umówić się na konsultację? Skontaktuj się ze mną już dziś! Razem możemy stworzyć rozwiązania, które będą wspierać rozwój Twojego biznesu. Odpowiem na wszystkie pytania i przedstawię, jak mogę pomóc w realizacji Twoich celów."
                 }
-                imagePath={"/files/images/contact-image.jpg"}
+                imagePath={"/files/images/kontakt-hero.jpg"}
                 showButton={false}
             />
         </DefaultLayout>

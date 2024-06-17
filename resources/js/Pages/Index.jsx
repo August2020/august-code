@@ -7,8 +7,6 @@ import HeroSection from "@/Components/Sections/HeroSection";
 import ServicesSection from "@/Components/Sections/ServicesSection";
 
 const Index = () => {
-    const servicesImagePath = "/files/images/laptop-code-image.jpg";
-
     return (
         <DefaultLayout>
             <HeroSection
@@ -31,11 +29,11 @@ const Index = () => {
                     imagePath={"/files/images/profilowe.jpg"}
                 />
             </div>
-            <ServicesSection imagePath={servicesImagePath} />
+            <ServicesSection imagePath={"/files/images/uslugi.jpg"} />
             <ContentImageSection
                 title={"Co Może Osiągnąć Twoja Firma?"}
                 content={"Twoja firma zyska widoczność w przestrzeni online, przyciągając klientów i budując silną obecność. Dzięki innowacyjnym rozwiązaniom internetowym, obejmującym wszystko od prostych stron internetowych po zaawansowane platformy e-commerce, Twoja firma będzie się wyróżniać. Dodatkowo otrzymasz wsparcie techniczne i usługi utrzymania, zapewniające płynne funkcjonowanie. Moje usługi mają na celu zwiększenie efektywności działania Twojej firmy poprzez automatyzację procesów i optymalizację działań online."}
-                imagePath={"/files/images/laptop-code-image.jpg"}
+                imagePath={"/files/images/zysk.jpg"}
             />
             <CollaborationSection />
         </DefaultLayout>

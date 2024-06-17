@@ -11,7 +11,7 @@ const ContactSection = () => {
         });
     }, []);
 
-    const backgroundImage = "/files/images/laptop-code-image.jpg";
+    const backgroundImage = "/files/images/kontakt-baner.jpg";
     const contactTitle = "Gotowy na krok w przód w świecie internetowym?";
     const contactText =
         "Niezależnie od tego, czy potrzebujesz strony wizytówki, czy skomplikowanej platformy e-commerce, jestem tu, aby Ci pomóc. Skontaktuj się ze mną już dziś, abyśmy mogli wspólnie rozwinąć Twoją obecność online i przekształcić Twoje cele w rzeczywistość!";

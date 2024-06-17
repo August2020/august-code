@@ -12,7 +12,7 @@ const Design = () => {
                 content={
                     "Projektowanie wyjątkowych doświadczeń użytkowników i intuicyjnych interfejsów jest kluczem do sukcesu Twojego produktu. Tworzę rozwiązania, które łączą estetykę z funkcjonalnością, przekształcając Twoje pomysły w produkt, który zachwyci Ciebie i Twoich klientów."
                 }
-                imagePath={"/files/images/hero-image.jpg"}
+                imagePath={"/files/images/projektowanie-hero.jpg"}
             />
 
             <div className="px-4 mx-auto sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
@@ -39,7 +39,7 @@ const Design = () => {
                     content={
                         "Mój proces projektowania obejmuje kilka kluczowych etapów: odkrycie, definiowanie, rozwój i dostarczenie. Na każdym z tych etapów ściśle współpracuję z klientami, aby zapewnić, że końcowy produkt jest zgodny z ich wizją i celami. Od wstępnych badań i tworzenia prototypów, po testowanie i ostateczne wdrożenie, dążę do stworzenia wyjątkowych i efektywnych rozwiązań."
                     }
-                    imagePath={"/files/images/design-process.jpg"}
+                    imagePath={"/files/images/projektowanie-proces.jpg"}
                 />
             </div>
         </DefaultLayout>
