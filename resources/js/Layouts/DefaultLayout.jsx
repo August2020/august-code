@@ -4,13 +4,20 @@ import Footer from "@/Components/Global/Footer";
 
 export default function Guest({ children }) {
     return (
-        <div className="min-h-screen overflow-hidden">
-            <FlowbiteInit></FlowbiteInit>
-            <Navigation />
-            <main>
-                <div className="bg-transparent overflow-hidden">{children}</div>
-            </main>
-            <Footer />
-        </div>
+        <>
+            <Head>
+                <meta name="robots" content="none, nofollow, noindex" />
+            </Head>
+            <div className="min-h-screen overflow-hidden">
+                <FlowbiteInit></FlowbiteInit>
+                <Navigation />
+                <main>
+                    <div className="bg-transparent overflow-hidden">
+                        {children}
+                    </div>
+                </main>
+                <Footer />
+            </div>
+        </>
     );
 }
