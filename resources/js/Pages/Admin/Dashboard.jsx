@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import ApexCharts from "apexcharts";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
 
 const Dashboard = ({ auth }) => {
     // Chart data
@@ -61,7 +60,6 @@ const Dashboard = ({ auth }) => {
 
     return (
         <AuthenticatedLayout user={auth.user}>
-            <Head title="Dashboard" />
 
             <div className="p-6 text-gray-900">Hello, {auth.user.name} </div>
 
