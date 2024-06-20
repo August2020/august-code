@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="none" />
 
-        <title inertia>August Code</title>
+        <title>August Code</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
