@@ -5,9 +5,6 @@ import Footer from "@/Components/Global/Footer";
 export default function Guest({ children }) {
     return (
         <>
-            <Head>
-                <meta name="robots" content="none, nofollow, noindex" />
-            </Head>
             <div className="min-h-screen overflow-hidden">
                 <FlowbiteInit></FlowbiteInit>
                 <Navigation />

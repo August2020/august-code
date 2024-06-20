@@ -2,9 +2,7 @@ import { Head } from "@inertiajs/react";
 export default function Guest({ children }) {
     return (
         <>
-            <Head>
-                <meta name="robots" content="none, nofollow, noindex" />
-            </Head>
+            <Head title="August Code" />
             <div className="min-h-screen bg-gray-800 flex items-center justify-center">
                 <main>
                     <div className="max-w-7xl px-4">
