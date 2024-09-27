@@ -5,7 +5,7 @@ const Index = () => {
     return (
         <AuthenticatedLayout>
             <div>
-                <h1>Welcome to My Application</h1>
+                <h1>Welcome to Articles Page</h1>
             </div>
         </AuthenticatedLayout>
     );

@@ -49,9 +49,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Article-related routes
     Route::middleware(['verified'])->group(function () {
         Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
+        Route::get('/articles/create', [ArticlesController::class, 'create'])->name('articles.create');
         Route::get('/articles-categories', [ArticleCategoriesController::class, 'index'])->name('articles-categories.index');
+        Route::get('/articles-categories/create', [ArticleCategoriesController::class, 'create'])->name('articles-categories.create');
         Route::get('/articles-tags', [ArticleTagsController::class, 'index'])->name('articles-tags.index');
-        // Add more routes as needed
+        Route::get('/articles-tags/create', [ArticleTagsController::class, 'create'])->name('articles-tags.create');
     });
 });
 

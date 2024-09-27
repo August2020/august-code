@@ -178,6 +178,14 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
+                                    href={'articles/create'}
+                                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    Add Article
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href={'articles-categories'}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
@@ -186,10 +194,26 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
+                                    href={'articles-categories/create'}
+                                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    Add Article Category
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
                                     href={'articles-tags'}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Article Tags
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href={'articles-tags/create'}
+                                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                >
+                                    Add Article Tag
                                 </Link>
                             </li>
                         </ul>

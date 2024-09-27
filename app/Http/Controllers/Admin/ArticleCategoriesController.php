@@ -26,7 +26,7 @@ class ArticleCategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.article_categories.create');
+        return Inertia::render('Admin/ArticlesCategories/Create');
     }
 
     /**
