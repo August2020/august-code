@@ -7,7 +7,7 @@ use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Support\Facades\DB;
 
 class ArticlesController extends Controller
 {
@@ -16,7 +16,9 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        // Eager loading categories and tags to prevent N+1 issue
+        $articles = Article::with(['categories', 'tags'])->get();
+
         return Inertia::render('Admin/Articles/Index', [
             'articles' => $articles,
         ]);
@@ -40,12 +42,12 @@ class ArticlesController extends Controller
         DB::transaction(function () use ($validated) {
             $article = Article::create($validated);
 
-            // Attach categories
+            // Attach categories if present
             if (isset($validated['categories'])) {
                 $article->categories()->attach($validated['categories']);
             }
 
-            // Attach tags
+            // Attach tags if present
             if (isset($validated['tags'])) {
                 $article->tags()->attach($validated['tags']);
             }
@@ -63,14 +65,15 @@ class ArticlesController extends Controller
         $validated = $request->validated();
 
         DB::transaction(function () use ($article, $validated) {
-            $article->update($validated);
+            // Use `fill` to update the article's properties and then save
+            $article->fill($validated)->save();
 
-            // Sync categories
+            // Sync categories if present
             if (isset($validated['categories'])) {
                 $article->categories()->sync($validated['categories']);
             }
 
-            // Sync tags
+            // Sync tags if present
             if (isset($validated['tags'])) {
                 $article->tags()->sync($validated['tags']);
             }
@@ -86,7 +89,7 @@ class ArticlesController extends Controller
     public function destroy(Article $article)
     {
         DB::transaction(function () use ($article) {
-            // Detach categories and tags
+            // Detach categories and tags (if no cascading delete is configured in the DB)
             $article->categories()->detach();
             $article->tags()->detach();
 
