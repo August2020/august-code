@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ArticleCategory;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreArticleCategoryRequest;
+use App\Http\Requests\UpdateArticleCategoryRequest;
 use Inertia\Inertia;
-use Inertia\Response;
 
 class ArticleCategoriesController extends Controller
 {
@@ -16,6 +16,7 @@ class ArticleCategoriesController extends Controller
     public function index()
     {
         $categories = ArticleCategory::all();
+
         return Inertia::render('Admin/ArticlesCategories/Index', [
             'articlesCategories' => $categories,
         ]);
@@ -32,26 +33,12 @@ class ArticleCategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreArticleCategoryRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:article_categories',
-        ]);
-
-        ArticleCategory::create([
-            'name' => $request->name,
-        ]);
+        ArticleCategory::create($request->validated());
 
         return redirect()->route('admin.article_categories.index')
             ->with('success', 'Article category created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(ArticleCategory $articleCategory)
-    {
-        return view('admin.article_categories.show', compact('articleCategory'));
     }
 
     /**
@@ -59,21 +46,17 @@ class ArticleCategoriesController extends Controller
      */
     public function edit(ArticleCategory $articleCategory)
     {
-        return view('admin.article_categories.edit', compact('articleCategory'));
+        return Inertia::render('Admin/ArticlesCategories/Edit', [
+            'articleCategory' => $articleCategory,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ArticleCategory $articleCategory)
+    public function update(UpdateArticleCategoryRequest $request, ArticleCategory $articleCategory)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:article_categories,name,' . $articleCategory->id,
-        ]);
-
-        $articleCategory->update([
-            'name' => $request->name,
-        ]);
+        $articleCategory->update($request->validated());
 
         return redirect()->route('admin.article_categories.index')
             ->with('success', 'Article category updated successfully.');

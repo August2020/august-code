@@ -11,7 +11,8 @@ class StoreArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Allow all users to make this request (you can adjust this based on your needs)
+        return true;
     }
 
     /**
@@ -22,7 +23,12 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',     // Article title is required and should be a string
+            'content' => 'required|string',           // Article content is required
+            'categories' => 'nullable|array',         // Categories can be an optional array
+            'categories.*' => 'exists:categories,id', // Each category must exist in the database
+            'tags' => 'nullable|array',               // Tags can be an optional array
+            'tags.*' => 'exists:tags,id',             // Each tag must exist in the database
         ];
     }
 }
