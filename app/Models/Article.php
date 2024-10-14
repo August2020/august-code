@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    use HasFactory, SoftDeletes; // Use SoftDeletes if you want to handle soft deletion
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +28,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at']; // For soft deletes
+    protected $dates = ['deleted_at'];
 
     /**
      * Get the category associated with the article.
