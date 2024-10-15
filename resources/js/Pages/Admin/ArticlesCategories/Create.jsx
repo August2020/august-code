@@ -14,7 +14,7 @@ const Create = ({ errors }) => {
 
     return (
         <AuthenticatedLayout>
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto my-4">
                 <h1 className="text-2xl font-bold mb-4">Create a New Category</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input

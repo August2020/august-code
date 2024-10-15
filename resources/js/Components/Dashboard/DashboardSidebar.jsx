@@ -13,7 +13,7 @@ const DashboardSidebar = () => {
                 <ul className="space-y-2 font-medium">
                     <li>
                         <Link
-                            href={'dashboard'}
+                            href={"/admin/dashboard"}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -31,7 +31,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href={'kanban'}
+                            href={"kanban"}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -96,7 +96,7 @@ const DashboardSidebar = () => {
                         >
                             <li>
                                 <Link
-                                    href={'pages'}
+                                    href={"pages"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Pages List
@@ -104,7 +104,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href={'sections'}
+                                    href={"sections"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Global Sections
@@ -112,7 +112,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href={'statics'}
+                                    href={"statics"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Static Contents
@@ -170,7 +170,7 @@ const DashboardSidebar = () => {
                         >
                             <li>
                                 <Link
-                                    href={'articles'}
+                                    href={"/admin/articles"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Articles List
@@ -178,7 +178,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href={'articles/create'}
+                                    href={"/admin/articles/create"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Add Article
@@ -186,7 +186,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href={'articles-categories'}
+                                    href={"/admin/articles_categories"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Article Categories
@@ -194,7 +194,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href={'articles-categories/create'}
+                                    href={"/admin/article_categories/create"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Add Article Category
@@ -202,7 +202,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href={'articles-tags'}
+                                    href={"/admin/article_tags"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Article Tags
@@ -210,7 +210,7 @@ const DashboardSidebar = () => {
                             </li>
                             <li>
                                 <Link
-                                    href={'articles-tags/create'}
+                                    href={"/admin/article_tags/create"}
                                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                                 >
                                     Add Article Tag
@@ -220,7 +220,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href={'inbox'}
+                            href={"inbox"}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -242,7 +242,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href={'clients'}
+                            href={"clients"}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -261,7 +261,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href={'services'}
+                            href={"services"}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -280,7 +280,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href={'tickets'}
+                            href={"tickets"}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg
@@ -305,7 +305,7 @@ const DashboardSidebar = () => {
                     </li>
                     <li>
                         <Link
-                            href={'logs'}
+                            href={"logs"}
                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         >
                             <svg

@@ -18,6 +18,7 @@ use Inertia\Inertia;
 |
 */
 
+// Public Routes
 Route::get('/', function () {
     return Inertia::render('Index');
 });
@@ -40,21 +41,27 @@ Route::get('/kontakt', function () {
 
 // Admin Routes
 Route::prefix('admin')->middleware(['auth'])->group(function () {
+    // Authentication routes for admin
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+    
+    // Dashboard
     Route::get('/dashboard', function () {
         return Inertia::render('Admin/Dashboard');
     })->middleware(['verified'])->name('admin.dashboard');
 
-    // Article-related routes
+    // Resource routes
     Route::middleware(['verified'])->group(function () {
-        Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
-        Route::get('/articles/create', [ArticlesController::class, 'create'])->name('articles.create');
-        Route::get('/articles-categories', [ArticleCategoriesController::class, 'index'])->name('articles-categories.index');
-        Route::get('/articles-categories/create', [ArticleCategoriesController::class, 'create'])->name('articles-categories.create');
-        Route::get('/articles-tags', [ArticleTagsController::class, 'index'])->name('articles-tags.index');
-        Route::get('/articles-tags/create', [ArticleTagsController::class, 'create'])->name('articles-tags.create');
+        // Article-related routes
+        Route::resource('articles', ArticlesController::class, ['as' => 'admin']);
+
+        // Article categories routes
+        Route::resource('article_categories', ArticleCategoriesController::class, ['as' => 'admin']);
+
+        // Article tags routes
+        Route::resource('article_tags', ArticleTagsController::class, ['as' => 'admin']);
     });
 });
 
+// Auth routes
 require __DIR__.'/auth.php';
