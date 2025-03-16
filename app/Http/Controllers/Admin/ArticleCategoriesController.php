@@ -36,7 +36,6 @@ class ArticleCategoriesController extends Controller
     public function store(StoreArticleCategoryRequest $request)
     {
         ArticleCategory::create($request->validated());
-
         return redirect()->route('admin.article_categories.index')
             ->with('success', 'Article category created successfully.');
     }
@@ -48,7 +47,7 @@ class ArticleCategoriesController extends Controller
     {
         return Inertia::render('Admin/ArticlesCategories/Edit', [
             'articleCategory' => $articleCategory,
-        ]);
+        ]);        
     }
 
     /**

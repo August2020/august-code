@@ -1,29 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { useForm } from "react-hook-form";
 import { Inertia } from "@inertiajs/inertia";
 
 const Create = ({ errors }) => {
-    const { register, handleSubmit, reset } = useForm();
+    const [formData, setFormData] = useState({
+        name: "",
+    });
 
-    const onSubmit = (data) => {
-        Inertia.post(route("admin.article_categories.store"), data, {
-            onSuccess: () => reset(),
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    };
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+
+        Inertia.post(route("admin.article_categories.store"), formData, {
+            onSuccess: () => {
+                setFormData({ name: "" }); // Reset form after success
+            },
+            onError: (error) => {
+                console.error(error);
+            },
         });
     };
 
     return (
         <AuthenticatedLayout>
             <div className="max-w-2xl mx-auto my-4">
-                <h1 className="text-2xl font-bold mb-4">Create a New Category</h1>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <h1 className="text-2xl font-bold mb-4">
+                    Create a New Category
+                </h1>
+                <form onSubmit={onSubmit}>
+                    <label htmlFor="name">Name:</label>
                     <input
-                        {...register("name", { required: true })}
-                        placeholder="Category Name"
-                        className="w-full px-3 py-2 border rounded-md"
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="border border-gray-300 p-2 w-full"
                     />
-                    {errors?.name && <span className="text-red-500 text-sm">{errors.name}</span>}
-                    <button type="submit" className="mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md">
+
+                    {errors?.name && (
+                        <p className="text-red-500 text-sm">{errors.name}</p>
+                    )}
+
+                    <button
+                        type="submit"
+                        className="mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md"
+                    >
                         Create
                     </button>
                 </form>
