@@ -11,7 +11,7 @@ export default function ResponsiveDashboard({ user, children }) {
                 <DashboardSidebar />
 
                 <div className="p-4 sm:ml-64 mt-14">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg pl-4 pr-4">
                         {children}
                     </div>
                 </div>

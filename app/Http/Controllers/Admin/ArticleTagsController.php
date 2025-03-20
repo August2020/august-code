@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ArticleTag;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreArticleTagRequest;
+use App\Http\Requests\UpdateArticleTagRequest;
 use Inertia\Inertia;
-use Inertia\Response;
 
 class ArticleTagsController extends Controller
 {
@@ -15,9 +15,10 @@ class ArticleTagsController extends Controller
      */
     public function index()
     {
-        $tags = ArticleTag::all();
+        $articlesTags = ArticleTag::all();
+
         return Inertia::render('Admin/ArticlesTags/Index', [
-            'tags' => $tags,
+            'articlesTags' => $articlesTags,
         ]);
     }
 
@@ -26,32 +27,18 @@ class ArticleTagsController extends Controller
      */
     public function create()
     {
-        return view('admin.article_tags.create');
+        return Inertia::render('Admin/ArticlesTags/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreArticleTagRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:article_tags',
-        ]);
-
-        ArticleTag::create([
-            'name' => $request->name,
-        ]);
+        ArticleTag::create($request->validated());
 
         return redirect()->route('admin.article_tags.index')
             ->with('success', 'Article tag created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(ArticleTag $articleTag)
-    {
-        return view('admin.article_tags.show', compact('articleTag'));
     }
 
     /**
@@ -59,21 +46,17 @@ class ArticleTagsController extends Controller
      */
     public function edit(ArticleTag $articleTag)
     {
-        return view('admin.article_tags.edit', compact('articleTag'));
+        return Inertia::render('Admin/ArticlesTags/Edit', [
+            'articleTag' => $articleTag,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ArticleTag $articleTag)
+    public function update(UpdateArticleTagRequest $request, ArticleTag $articleTag)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:article_tags,name,' . $articleTag->id,
-        ]);
-
-        $articleTag->update([
-            'name' => $request->name,
-        ]);
+        $articleTag->update($request->validated());
 
         return redirect()->route('admin.article_tags.index')
             ->with('success', 'Article tag updated successfully.');

@@ -21,10 +21,10 @@ class UpdateArticleTagRequest extends FormRequest
      */
     public function rules(): array
     {
-        $tagId = $this->route('articleTag')->id;
+        $tagId = $this->route('articleTag');
         
         return [
-            'name' => 'required|string|max:255|unique:article_tags,name,' . $tagId,
+            'name' => 'required|string|max:255|unique:article_tags,name,',
         ];
     }
 }
