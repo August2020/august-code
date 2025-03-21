@@ -44,7 +44,11 @@ export default {
         },
     },
 
-    plugins: [forms, require('flowbite/plugin')({
-        charts: true,
-    })],
+    plugins: [
+        forms,
+        require('flowbite/plugin')({
+            charts: true,
+        }),
+        require('flowbite-typography')
+    ],
 };

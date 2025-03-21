@@ -10,11 +10,6 @@ class Article extends Model
 {
     use HasFactory, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'title',
         'description',
@@ -23,24 +18,13 @@ class Article extends Model
         'active',
     ];
 
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
     protected $dates = ['deleted_at'];
 
-    /**
-     * Get the category associated with the article.
-     */
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(ArticleCategory::class, 'article_category_id');
+        return $this->belongsToMany(ArticleCategory::class, 'article_category_article');
     }
 
-    /**
-     * The tags that belong to the article.
-     */
     public function tags()
     {
         return $this->belongsToMany(ArticleTag::class);
