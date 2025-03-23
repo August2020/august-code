@@ -24,6 +24,8 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',     // Article title is required and should be a string
+            'description' => 'required|string',           // Article description is required
+            'image' => 'nullable|string|max:255',     // Article image
             'content' => 'required|string',           // Article content is required
             'categories' => 'nullable|array',         // Categories can be an optional array
             'categories.*' => 'exists:categories,id', // Each category must exist in the database

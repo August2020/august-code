@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\ArticleCategory;
+use App\Models\ArticleTag;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use Inertia\Inertia;
@@ -29,8 +31,15 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/Articles/Create');
+        $articlesTags = ArticleTag::all();
+        $articlesCategories = ArticleCategory::all();
+
+        return Inertia::render('Admin/Articles/Create', [
+            'articlesCategories' => $articlesCategories,
+            'articlesTags' => $articlesTags,
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.

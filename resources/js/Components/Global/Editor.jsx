@@ -53,6 +53,7 @@ const Editor = ({ content, onChange }) => {
             {/* Toolbar */}
             <div className="px-3 py-2 border-b border-gray-200 dark:border-gray-600 flex flex-wrap items-center space-x-2">
                 <button
+                    type="button"
                     onClick={() => editor.chain().focus().toggleBold().run()}
                     className={`p-1.5 rounded-sm ${
                         editor.isActive("bold")
@@ -63,6 +64,7 @@ const Editor = ({ content, onChange }) => {
                     <b>B</b>
                 </button>
                 <button
+                    type="button"
                     onClick={() => editor.chain().focus().toggleItalic().run()}
                     className={`p-1.5 rounded-sm ${
                         editor.isActive("italic")
@@ -73,6 +75,7 @@ const Editor = ({ content, onChange }) => {
                     <i>I</i>
                 </button>
                 <button
+                    type="button"
                     onClick={() =>
                         editor.chain().focus().toggleUnderline().run()
                     }
@@ -85,6 +88,7 @@ const Editor = ({ content, onChange }) => {
                     <u>U</u>
                 </button>
                 <button
+                    type="button"
                     onClick={() =>
                         editor.chain().focus().toggleBulletList().run()
                     }
@@ -93,6 +97,7 @@ const Editor = ({ content, onChange }) => {
                     • List
                 </button>
                 <button
+                    type="button"
                     onClick={() =>
                         editor.chain().focus().toggleOrderedList().run()
                     }
@@ -101,6 +106,7 @@ const Editor = ({ content, onChange }) => {
                     1. List
                 </button>
                 <button
+                    type="button"
                     onClick={() => {
                         const url = window.prompt("Enter image URL:");
                         if (url)
@@ -111,6 +117,7 @@ const Editor = ({ content, onChange }) => {
                     🖼️ Image
                 </button>
                 <button
+                    type="button"
                     onClick={() => {
                         const url = window.prompt("Enter YouTube URL:");
                         if (url)
@@ -125,6 +132,7 @@ const Editor = ({ content, onChange }) => {
                     🎥 YouTube
                 </button>
                 <button
+                    type="button"
                     onClick={() => {
                         const url = window.prompt("Enter Link URL:");
                         editor.chain().focus().setLink({ href: url }).run();
@@ -134,12 +142,14 @@ const Editor = ({ content, onChange }) => {
                     🔗 Link
                 </button>
                 <button
+                    type="button"
                     onClick={() => editor.chain().focus().unsetLink().run()}
                     className="p-1.5 text-gray-500 rounded-sm hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
                 >
                     🚫 Unlink
                 </button>
                 <select
+                    type="button"
                     onChange={(e) =>
                         editor
                             .chain()
@@ -162,6 +172,7 @@ const Editor = ({ content, onChange }) => {
                     className="p-1.5 text-gray-500 rounded-sm bg-white dark:bg-gray-700"
                 />
                 <button
+                    type="button"
                     onClick={() =>
                         editor.chain().focus().setTextAlign("left").run()
                     }
@@ -170,6 +181,7 @@ const Editor = ({ content, onChange }) => {
                     ⬅
                 </button>
                 <button
+                    type="button"
                     onClick={() =>
                         editor.chain().focus().setTextAlign("center").run()
                     }
@@ -178,6 +190,7 @@ const Editor = ({ content, onChange }) => {
                     ⬆
                 </button>
                 <button
+                    type="button"
                     onClick={() =>
                         editor.chain().focus().setTextAlign("right").run()
                     }
@@ -186,6 +199,7 @@ const Editor = ({ content, onChange }) => {
                     ➡
                 </button>
                 <button
+                    type="button"
                     onClick={() =>
                         editor.chain().focus().toggleHighlight().run()
                     }
