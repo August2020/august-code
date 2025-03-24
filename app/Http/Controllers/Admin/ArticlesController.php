@@ -48,15 +48,18 @@ class ArticlesController extends Controller
     {
         $validated = $request->validated();
 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('articles', 'public');
+            $validated['image'] = $imagePath;
+        }
+
         DB::transaction(function () use ($validated) {
             $article = Article::create($validated);
 
-            // Attach categories if present
             if (isset($validated['categories'])) {
                 $article->categories()->attach($validated['categories']);
             }
 
-            // Attach tags if present
             if (isset($validated['tags'])) {
                 $article->tags()->attach($validated['tags']);
             }
