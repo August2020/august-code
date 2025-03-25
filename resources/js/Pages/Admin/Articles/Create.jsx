@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { useForm } from "@inertiajs/react";
 import { Button, TextInput, Label, Checkbox } from "flowbite-react";
@@ -11,30 +11,35 @@ const Create = ({ articlesCategories, articlesTags }) => {
         content: "",
         image: null,
         active: true,
+        category: "",
+        tags: []
     });
 
-    const [selectedCategory, setSelectedCategory] = useState("");
-    const [selectedTags, setSelectedTags] = useState([]);
-    
     const handleImageChange = (e) => {
         setData("image", e.target.files[0]);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+    
         const formData = new FormData();
         formData.append("title", data.title);
         formData.append("description", data.description);
         formData.append("content", data.content);
-        formData.append("active", data.active);
-        formData.append("category", selectedCategory);
-        selectedTags.forEach(tag => formData.append("tags[]", tag));
-        
+        formData.append("active", data.active ? 1 : 0);
+        formData.append("category", data.category);
+
+        data.tags.forEach((tag) => {
+            formData.append("tags[]", tag);
+        });
+
         if (data.image) {
             formData.append("image", data.image);
         }
-        
-        post(route("admin.articles.store"), { data: formData, forceFormData: true });
+
+        console.log("FormData before send:", Object.fromEntries(formData.entries()));
+
+        post(route("admin.articles.store"), formData, { forceFormData: true });
     };
 
     return (
@@ -42,7 +47,7 @@ const Create = ({ articlesCategories, articlesTags }) => {
             <div className="max-w-4xl mx-auto my-6">
                 <h1 className="text-2xl font-bold mb-4">Create Article</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* ✅ Title Selection */}
+                    {/* Title */}
                     <Label htmlFor="title">Title</Label>
                     <TextInput
                         id="title"
@@ -50,7 +55,8 @@ const Create = ({ articlesCategories, articlesTags }) => {
                         onChange={(e) => setData("title", e.target.value)}
                         required
                     />
-                    {/* ✅ Description Selection */}
+
+                    {/* Description */}
                     <Label htmlFor="description">Description</Label>
                     <TextInput
                         id="description"
@@ -58,13 +64,11 @@ const Create = ({ articlesCategories, articlesTags }) => {
                         onChange={(e) => setData("description", e.target.value)}
                     />
 
-                    {/* ✅ Category Selection */}
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Select Category
-                    </label>
+                    {/* Category Selection */}
+                    <Label>Select Category</Label>
                     <select
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        value={data.category}
+                        onChange={(e) => setData("category", e.target.value)}
                         className="p-2 bg-white border rounded-md w-full dark:bg-gray-800 dark:text-white"
                     >
                         <option value="">-- Select Category --</option>
@@ -75,46 +79,29 @@ const Create = ({ articlesCategories, articlesTags }) => {
                         ))}
                     </select>
 
-                    {/* ✅ Image Upload */}
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="file_input">
-                        Upload file
-                    </label>
+                    {/* Image Upload */}
+                    <Label htmlFor="file_input">Upload file</Label>
                     <input
                         type="file"
                         id="file_input"
                         className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         onChange={handleImageChange}
                     />
-                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
-                        SVG, PNG, JPG, or GIF (MAX. 800x400px).
-                    </p>
                     
-                    {/* ✅ Editor with Content */}
+                    {/* Editor */}
                     <Label htmlFor="content">Content</Label>
                     <Editor
                         content={data.content}
                         onChange={(value) => setData("content", value)}
-                        categories={articlesCategories}
-                        tags={articlesTags}
-                        selectedCategory={selectedCategory}
-                        setSelectedCategory={setSelectedCategory}
-                        selectedTags={selectedTags}
-                        setSelectedTags={setSelectedTags}
                     />
 
-                    {/* ✅ Tags Selection */}
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Select Tags
-                    </label>
+                    {/* Tags Selection */}
+                    <Label>Select Tags</Label>
                     <select
                         multiple
-                        value={selectedTags}
+                        value={data.tags}
                         onChange={(e) =>
-                            setSelectedTags(
-                                [...e.target.selectedOptions].map(
-                                    (o) => o.value
-                                )
-                            )
+                            setData("tags", [...e.target.selectedOptions].map((o) => o.value))
                         }
                         className="p-2 bg-white border rounded-md w-full dark:bg-gray-800 dark:text-white"
                     >
@@ -125,18 +112,16 @@ const Create = ({ articlesCategories, articlesTags }) => {
                         ))}
                     </select>
 
-                    {/* ✅ Active Checkbox */}
+                    {/* Active Checkbox */}
                     <div className="flex items-center">
                         <Checkbox
                             checked={data.active}
-                            onChange={(e) =>
-                                setData("active", e.target.checked)
-                            }
+                            onChange={(e) => setData("active", e.target.checked)}
                         />
                         <Label className="ml-2">Active</Label>
                     </div>
 
-                    {/* ✅ Submit Button */}
+                    {/* Submit Button */}
                     <Button type="submit" disabled={processing} className="mt-4 bg-indigo-600 text-white py-2 px-4 rounded-md">
                         Create
                     </Button>

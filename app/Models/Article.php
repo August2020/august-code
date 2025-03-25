@@ -16,17 +16,18 @@ class Article extends Model
         'content',
         'image',
         'active',
+        'article_category_id',
     ];
 
     protected $dates = ['deleted_at'];
 
     public function categories()
     {
-        return $this->belongsToMany(ArticleCategory::class, 'article_category_article');
+        return $this->belongsTo(ArticleCategory::class, 'article_category_id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(ArticleTag::class);
+        return $this->belongsToMany(ArticleTag::class, 'articles_article_tags');
     }
 }

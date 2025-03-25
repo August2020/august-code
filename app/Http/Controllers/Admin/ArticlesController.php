@@ -53,15 +53,17 @@ class ArticlesController extends Controller
             $validated['image'] = $imagePath;
         }
 
-        DB::transaction(function () use ($validated) {
-            $article = Article::create($validated);
+        DB::transaction(function () use ($validated, $request) {
+            $article = Article::create([
+                'title' => $validated['title'],
+                'description' => $validated['description'],
+                'content' => $validated['content'],
+                'image' => $validated['image'],
+                'article_category_id' => $validated['category'],
+            ]);
 
-            if (isset($validated['categories'])) {
-                $article->categories()->attach($validated['categories']);
-            }
-
-            if (isset($validated['tags'])) {
-                $article->tags()->attach($validated['tags']);
+            if ($request->has('tags')) {
+                $article->tags()->attach($request->tags);
             }
         });
 

@@ -15,6 +15,14 @@ class StoreArticleRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'category' => $this->input('category') ?? null,
+            'tags' => $this->input('tags', '[]'), // Ensure tags is always an array
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,14 +31,13 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',     // Article title is required and should be a string
-            'description' => 'required|string',           // Article description is required
-            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',     // Article image
-            'content' => 'required|string',           // Article content is required
-            'categories' => 'nullable|array',         // Categories can be an optional array
-            'categories.*' => 'exists:categories,id', // Each category must exist in the database
-            'tags' => 'nullable|array',               // Tags can be an optional array
-            'tags.*' => 'exists:tags,id',             // Each tag must exist in the database
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'content' => 'required|string',
+            'category' => 'exists:article_category,id',
+            'tags' => 'array',
+            'tags.*' => 'exists:article_tags,id',
         ];
     }
 }

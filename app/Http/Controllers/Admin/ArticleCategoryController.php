@@ -8,7 +8,7 @@ use App\Http\Requests\StoreArticleCategoryRequest;
 use App\Http\Requests\UpdateArticleCategoryRequest;
 use Inertia\Inertia;
 
-class ArticleCategoriesController extends Controller
+class ArticleCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.

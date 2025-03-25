@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ArticlesController;
-use App\Http\Controllers\Admin\ArticleCategoriesController;
+use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\ArticleTagsController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
@@ -56,7 +56,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::resource('articles', ArticlesController::class, ['as' => 'admin']);
 
         // Article categories routes
-        Route::resource('article_categories', ArticleCategoriesController::class, ['as' => 'admin']);
+        Route::resource('article_categories', ArticleCategoryController::class, ['as' => 'admin']);
 
         // Article tags routes
         Route::resource('article_tags', ArticleTagsController::class, ['as' => 'admin']);

@@ -1,72 +1,69 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Link } from "@inertiajs/react";
-import { Table } from "flowbite-react";
 
-const Index = ({ articles }) => {
+const Index = ({ articles = [] }) => {
+    console.log("Articles:", articles);
+
     return (
         <AuthenticatedLayout>
             <div className="max-w-6xl mx-auto my-6">
                 <h1 className="text-2xl font-bold mb-4">Articles</h1>
 
-                <Link
-                    href={route("admin.articles.create")}
-                    className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-                >
-                    + Add Article
-                </Link>
-
-                <Table hoverable className="w-full mt-4">
-                    <Table.Head>
-                        <Table.HeadCell>ID</Table.HeadCell>
-                        <Table.HeadCell>Title</Table.HeadCell>
-                        <Table.HeadCell>Category</Table.HeadCell>
-                        <Table.HeadCell>Active</Table.HeadCell>
-                        <Table.HeadCell>Actions</Table.HeadCell>
-                    </Table.Head>
-                    <Table.Body>
-                        {articles.length > 0 ? (
-                            articles.map((article) => (
-                                <Table.Row key={article.id} className="border-b">
-                                    <Table.Cell>{article.id}</Table.Cell>
-                                    <Table.Cell>{article.title}</Table.Cell>
-                                    <Table.Cell>
-                                        {article.categories.map((cat) => cat.name).join(", ")}
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        {article.active ? (
-                                            <span className="text-green-600">Yes</span>
-                                        ) : (
-                                            <span className="text-red-600">No</span>
-                                        )}
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Link
-                                            href={route("admin.articles.edit", article.id)}
-                                            className="text-blue-500 hover:underline mr-4"
-                                        >
-                                            Edit
-                                        </Link>
-                                        <Link
-                                            href={route("admin.articles.destroy", article.id)}
-                                            className="text-red-500 hover:underline"
-                                            method="delete"
-                                            as="button"
-                                        >
-                                            Delete
-                                        </Link>
-                                    </Table.Cell>
-                                </Table.Row>
-                            ))
-                        ) : (
-                            <Table.Row>
-                                <Table.Cell colSpan="5" className="text-center py-4">
-                                    No articles found.
-                                </Table.Cell>
-                            </Table.Row>
-                        )}
-                    </Table.Body>
-                </Table>
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">ID</th>
+                                <th scope="col" className="px-6 py-3">Title</th>
+                                <th scope="col" className="px-6 py-3">Category</th>
+                                <th scope="col" className="px-6 py-3">Active</th>
+                                <th scope="col" className="px-6 py-3 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {articles.length > 0 ? (
+                                articles.map((article) => (
+                                    <tr key={article.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                            {article.id}
+                                        </td>
+                                        <td className="px-6 py-4">{article.title}</td>
+                                        <td className="px-6 py-4">
+                                            {article.categories.name}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {article.active ? (
+                                                <span className="text-green-600">Yes</span>
+                                            ) : (
+                                                <span className="text-red-600">No</span>
+                                            )}
+                                        </td>
+                                        <td className="px-6 py-4 text-center">
+                                            <a
+                                                href={route("admin.articles.edit", article.id)}
+                                                className="text-blue-600 dark:text-blue-400 hover:underline mr-4"
+                                            >
+                                                Edit
+                                            </a>
+                                            <a
+                                                href={route("admin.articles.destroy", article.id)}
+                                                className="text-red-600 dark:text-red-400 hover:underline"
+                                            >
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="5" className="px-6 py-4 text-center text-gray-500">
+                                        No articles found.
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </AuthenticatedLayout>
     );
