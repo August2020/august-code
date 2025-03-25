@@ -39,7 +39,7 @@ const Index = ({ articles = [] }) => {
                                             )}
                                         </td>
                                         <td className="px-6 py-4 text-center">
-                                            <a
+                                        <a
                                                 href={route("admin.articles.edit", article.id)}
                                                 className="text-blue-600 dark:text-blue-400 hover:underline mr-4"
                                             >

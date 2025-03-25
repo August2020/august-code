@@ -21,7 +21,7 @@ class Article extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(ArticleCategory::class, 'article_category_id');
     }

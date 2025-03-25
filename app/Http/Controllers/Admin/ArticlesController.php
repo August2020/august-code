@@ -72,6 +72,25 @@ class ArticlesController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $article = Article::with('category', 'tags')->findOrFail($id);
+
+        $articlesCategories = ArticleCategory::all();
+        $articlesTags = ArticleTag::all();
+
+        return inertia('Admin/Articles/Edit', [
+            'article' => $article,
+            'articlesCategories' => $articlesCategories,
+            'articlesTags' => $articlesTags
+        ]);
+    }
+
+
+
+    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateArticleRequest $request, Article $article)
