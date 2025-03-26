@@ -11,7 +11,7 @@ class UpdateArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // Allow the request (change if needed)
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdateArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'       => 'required|string|max:255',
+            'description' => 'nullable|string|max:500',
+            'content'     => 'required|string',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'active'      => 'boolean',
+            'category'    => 'required|exists:article_categories,id',
+            'tags'        => 'array',
+            'tags.*'      => 'exists:article_tags,id',
         ];
     }
 }

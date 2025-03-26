@@ -19,7 +19,7 @@ class ArticlesController extends Controller
     public function index()
     {
         // Eager loading categories and tags to prevent N+1 issue
-        $articles = Article::with(['categories', 'tags'])->get();
+        $articles = Article::with(['category', 'tags'])->get();
 
         return Inertia::render('Admin/Articles/Index', [
             'articles' => $articles,
@@ -102,8 +102,8 @@ class ArticlesController extends Controller
             $article->fill($validated)->save();
 
             // Sync categories if present
-            if (isset($validated['categories'])) {
-                $article->categories()->sync($validated['categories']);
+            if (isset($validated['category'])) {
+                $article->categories()->sync($validated['category']);
             }
 
             // Sync tags if present
@@ -122,13 +122,10 @@ class ArticlesController extends Controller
     public function destroy(Article $article)
     {
         DB::transaction(function () use ($article) {
-            // Detach categories and tags (if no cascading delete is configured in the DB)
-            $article->categories()->detach();
             $article->tags()->detach();
-
             $article->delete();
         });
-
+        
         return redirect()->route('admin.articles.index')
             ->with('success', 'Article deleted successfully.');
     }
