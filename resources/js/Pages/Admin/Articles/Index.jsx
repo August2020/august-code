@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import DeleteButton from "@/Components/Global/DeleteButton";
 import EditButton from "@/Components/Global/EditButton";
+import { TextInput } from "flowbite-react";
 
 const Index = ({ articles = [] }) => {
+    const [searchTerm, setSearchTerm] = useState();
+
+    const filteredArticles = articles.filter((article) =>
+        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.category.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <AuthenticatedLayout>
             <div className="max-w-6xl mx-auto my-6">
                 <h1 className="text-2xl font-bold mb-4">Articles</h1>
+
+                {/* Search Input */}
+                <TextInput
+                    type="text"
+                    placeholder="Search categories..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="mb-4 w-full"
+                />
 
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -34,8 +51,8 @@ const Index = ({ articles = [] }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {articles.length > 0 ? (
-                                articles.map((article) => (
+                            {filteredArticles.length > 0 ? (
+                                filteredArticles.map((article) => (
                                     <tr
                                         key={article.id}
                                         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
