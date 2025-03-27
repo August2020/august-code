@@ -1,5 +1,7 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import DeleteButton from "@/Components/Global/DeleteButton";
+import EditButton from "@/Components/Global/EditButton";
 
 const Index = ({ articlesTags }) => {
     return (
@@ -28,18 +30,18 @@ const Index = ({ articlesTags }) => {
                                         </td>
                                         <td className="px-6 py-4">{tag.name}</td>
                                         <td className="px-6 py-4 text-center">
-                                            <a
-                                                href={route("admin.article_tags.edit", tag.id)}
-                                                className="text-blue-600 dark:text-blue-400 hover:underline mr-4"
-                                            >
-                                                Edit
-                                            </a>
-                                            <a
-                                                href={route("admin.article_tags.destroy", tag.id)}
-                                                className="text-red-600 dark:text-red-400 hover:underline"
-                                            >
-                                                Delete
-                                            </a>
+                                            <EditButton
+                                                href={route(
+                                                    "admin.article_tags.edit",
+                                                    article.id
+                                                )}
+                                            />
+                                            <DeleteButton
+                                                href={route(
+                                                    "admin.article_tags.destroy",
+                                                    article.id
+                                                )}
+                                            />
                                         </td>
                                     </tr>
                                 ))

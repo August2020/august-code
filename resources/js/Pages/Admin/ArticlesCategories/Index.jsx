@@ -1,5 +1,7 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import DeleteButton from "@/Components/Global/DeleteButton";
+import EditButton from "@/Components/Global/EditButton";
 
 const Index = ({ articlesCategories }) => {
     return (
@@ -28,18 +30,19 @@ const Index = ({ articlesCategories }) => {
                                         </td>
                                         <td className="px-6 py-4">{category.name}</td>
                                         <td className="px-6 py-4 text-center">
-                                            <a
-                                                href={route("admin.article_categories.edit", category.id)}
-                                                className="text-blue-600 dark:text-blue-400 hover:underline mr-4"
-                                            >
-                                                Edit
-                                            </a>
-                                            <a
-                                                href={route("admin.article_categories.destroy", category.id)}
-                                                className="text-red-600 dark:text-red-400 hover:underline"
-                                            >
-                                                Delete
-                                            </a>
+                                            
+                                            <EditButton
+                                                href={route(
+                                                    "admin.article_categories.edit",
+                                                    article.id
+                                                )}
+                                            />
+                                            <DeleteButton
+                                                href={route(
+                                                    "admin.article_categories.destroy",
+                                                    article.id
+                                                )}
+                                            />
                                         </td>
                                     </tr>
                                 ))
