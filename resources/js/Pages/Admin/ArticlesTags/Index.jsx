@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import DeleteButton from "@/Components/Global/DeleteButton";
 import EditButton from "@/Components/Global/EditButton";
-import { TextInput } from "flowbite-react";
+import { TextInput, Button } from "flowbite-react";
 
 const Index = ({ articlesTags }) => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -15,15 +16,21 @@ const Index = ({ articlesTags }) => {
         <AuthenticatedLayout>
             <div className="max-w-4xl mx-auto my-6">
                 <h1 className="text-2xl font-bold mb-4">Article Tags</h1>
+                <div className="flex justify-between items-center mb-4">
+                    <TextInput
+                        type="text"
+                        placeholder="Search categories..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full max-w-md"
+                    />
 
-                <TextInput
-                    type="text"
-                    placeholder="Search categories..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="mb-4 w-full"
-                />
-
+                    <Link href={route("admin.articles_tags.create")}>
+                        <Button className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+                            + Add Tag
+                        </Button>
+                    </Link>
+                </div>
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
