@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import DeleteButton from "@/Components/Global/DeleteButton";
 import EditButton from "@/Components/Global/EditButton";
-import { TextInput } from "flowbite-react";
+import { TextInput, Button } from "flowbite-react";
 
 const Index = ({ articles = [] }) => {
     const [searchTerm, setSearchTerm] = useState();
@@ -17,14 +18,22 @@ const Index = ({ articles = [] }) => {
             <div className="max-w-6xl mx-auto my-6">
                 <h1 className="text-2xl font-bold mb-4">Articles</h1>
 
-                {/* Search Input */}
-                <TextInput
-                    type="text"
-                    placeholder="Search categories..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="mb-4 w-full"
-                />
+                <div className="flex justify-between items-center mb-4">
+                    {/* Search Input */}
+                    <TextInput
+                        type="text"
+                        placeholder="Search by title or category..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full max-w-md"
+                    />
+
+                    <Link href={route("admin.articles.create")}>
+                        <Button color="blue" className="ml-4">
+                            + Add Article
+                        </Button>
+                    </Link>
+                </div>
 
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
